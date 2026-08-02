@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
-  src: url("../assets/fonts/EBGaramond-Variable.ttf") format("truetype");
+  src: url("../assets/fonts/EBGaramond-Variable.woff2") format("woff2");
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-style: italic;
   font-weight: 400 700;
   font-display: swap;
-  src: url("../assets/fonts/EBGaramond-Italic-Variable.ttf") format("truetype");
+  src: url("../assets/fonts/EBGaramond-Italic-Variable.woff2") format("woff2");
 }
 
 :root {

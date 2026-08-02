@@ -1,0 +1,9 @@
+# Internal working notes — not part of the published site
+DESIGN.md
+PLAN.md
+
+# OS / editor cruft
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/

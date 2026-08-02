@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ziwei Wang | Actuarial Analyst</title>
+<meta name="description" content="Ziwei Wang — aspiring actuary. SOA Exams P, FM, FAM, SRM. Master of Actuarial Science candidate at Georgia State University.">
+<link rel="stylesheet" href="css/style.css">
+<script>
+  (() => {
+    let t;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
+<script>
+  // Marks the page as animated before first paint. anim.js drops the class
+  // if GSAP fails to load, so nothing stays hidden.
+  (() => {
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('anim');
+    }
+  })();
+</script>
+</head>
+<body>
+
+<nav id="site-nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">Ziwei Wang</a>
+    <div class="nav-right">
+      <ul>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light/dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <button id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<section id="hero">
+  <div class="hero-photo-card">
+    <img src="assets/headshot.jpg" alt="Ziwei Wang" class="headshot">
+  </div>
+  <div class="hero-body">
+    <p class="eyebrow">About Me</p>
+    <h1>Hi, I'm Ziwei Wang!</h1>
+    <p class="hero-lede">
+      Aspiring actuary focused on turning academic knowledge, programming skills,
+      and cross-market experience into actionable risk insights. I build pricing
+      and predictive models that support real-world insurance pricing decisions.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="assets/Ziwei_Wang_Resume.pdf" download class="btn btn-primary">Download Resume</a>
+      <a href="#contact" class="btn btn-outline">Contact Me</a>
+    </div>
+
+    <svg class="survival-curve" viewBox="0 0 360 40" aria-hidden="true">
+      <path d="M4,6 C80,6 110,10 150,20 C190,30 260,34 356,34" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" />
+      <circle cx="53.3" cy="6.8" r="2.2" fill="var(--accent)" />
+      <circle cx="150" cy="20" r="2.2" fill="var(--accent)" />
+      <circle cx="232" cy="30.8" r="2.2" fill="var(--accent)" />
+      <circle cx="314.6" cy="33.7" r="2.2" fill="var(--accent)" />
+    </svg>
+
+    <p class="badge-label">Current Projects</p>
+    <ul class="badge-list">
+      <li>
+        <a class="badge badge-link" href="https://github.com/Tedwang-gsu/term-life-pricing-model/blob/main/reports/pricing_report.md" target="_blank" rel="noopener">
+          Term Life Pricing <span class="badge-arrow" aria-hidden="true">&#8599;</span>
+        </a>
+      </li>
+      <li>
+        <a class="badge badge-link" href="https://tedwang-gsu.github.io/healthcare-cost-prediction/" target="_blank" rel="noopener">
+          Healthcare Cost Prediction <span class="badge-arrow" aria-hidden="true">&#8599;</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="info-panel">
+      <div class="info-row">
+        <div class="info-item">
+          <p class="info-label">Current Status</p>
+          <p class="info-value">Master of Actuarial Science Candidate, GSU &middot; Atlanta, GA</p>
+        </div>
+        <div class="info-item">
+          <p class="info-label">Target Roles</p>
+          <p class="info-value">Actuarial Analyst / Associate</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat">
+        <span class="stat-num">4</span>
+        <span class="stat-label">SOA Exams Passed</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3.90</span>
+        <span class="stat-label">Graduate GPA</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Languages Spoken</span>
+      </div>
+    </div>
+
+    <span class="badge exam-tag">P &middot; FM &middot; FAM &middot; SRM</span>
+  </div>
+
+  <a class="scroll-cue" href="#education" aria-label="Scroll to Education">
+    <span class="scroll-cue-label">Scroll</span>
+    <span class="scroll-cue-line"><span class="scroll-cue-run"></span></span>
+  </a>
+</section>
+
+<section id="education">
+  <div class="section-head">
+    <span class="section-mark">&mdash;</span>
+    <h2>Education</h2>
+  </div>
+  <div class="plate-row">
+
+    <article class="plate">
+      <div class="plate-frame">
+        <div class="plate-art">
+          <p class="plate-degree">M.A.S.</p>
+          <svg class="plate-motif" viewBox="0 0 120 80" fill="none" aria-hidden="true">
+            <path d="M4,14 C30,15 46,22 62,34 C80,47 98,58 116,64" stroke="var(--gold)" stroke-width="1.4" />
+            <circle cx="15.1" cy="14.9" r="2.4" fill="var(--accent)" />
+            <circle cx="62" cy="34" r="2.4" fill="var(--accent)" />
+            <circle cx="89" cy="51.6" r="2.4" fill="var(--accent)" />
+            <circle cx="110.6" cy="62" r="2.4" fill="var(--accent)" />
+          </svg>
+          <p class="plate-school">Georgia State University</p>
+          <p class="plate-gpa">GPA 3.90 / 4.00</p>
+        </div>
+      </div>
+      <div class="plate-caption">
+        <span class="plate-numeral">&#8544;</span>
+        <h3>Actuarial Science</h3>
+        <span class="plate-status is-current">In Progress</span>
+      </div>
+      <p class="plate-meta">Robinson College of Business &middot; Atlanta</p>
+      <p class="plate-date">Jan 2026 – May 2027 (Expected)</p>
+    </article>
+
+    <article class="plate">
+      <div class="plate-frame">
+        <div class="plate-art">
+          <p class="plate-degree">M.A.E.</p>
+          <svg class="plate-motif" viewBox="0 0 120 80" fill="none" aria-hidden="true">
+            <path d="M6,64 L114,16" stroke="var(--gold)" stroke-width="1.4" />
+            <path d="M6,16 L114,64" stroke="var(--gold)" stroke-width="1.4" />
+            <circle cx="60" cy="40" r="3.2" fill="var(--accent)" />
+          </svg>
+          <p class="plate-school">Columbia University</p>
+          <p class="plate-gpa">GPA 3.85 / 4.30</p>
+        </div>
+      </div>
+      <div class="plate-caption">
+        <span class="plate-numeral">&#8545;</span>
+        <h3>Economics</h3>
+        <span class="plate-status">Conferred</span>
+      </div>
+      <p class="plate-meta">Graduate School of Arts and Sciences &middot; New York</p>
+      <p class="plate-date">Sept 2024 – Dec 2025</p>
+    </article>
+
+    <article class="plate">
+      <div class="plate-frame">
+        <div class="plate-art">
+          <p class="plate-degree">B.Ec.</p>
+          <svg class="plate-motif" viewBox="0 0 120 80" fill="none" aria-hidden="true">
+            <path d="M12,44 V70" stroke="var(--gold)" stroke-width="1.4" />
+            <rect x="5.5" y="50" width="13" height="16" fill="var(--bg-raised)" stroke="var(--gold)" stroke-width="1.4" />
+            <path d="M36,34 V62" stroke="var(--accent)" stroke-width="1.4" />
+            <rect x="29.5" y="40" width="13" height="18" fill="var(--accent)" />
+            <path d="M60,24 V52" stroke="var(--accent)" stroke-width="1.4" />
+            <rect x="53.5" y="30" width="13" height="18" fill="var(--accent)" />
+            <path d="M84,26 V50" stroke="var(--gold)" stroke-width="1.4" />
+            <rect x="77.5" y="32" width="13" height="14" fill="var(--bg-raised)" stroke="var(--gold)" stroke-width="1.4" />
+            <path d="M108,8 V40" stroke="var(--accent)" stroke-width="1.4" />
+            <rect x="101.5" y="14" width="13" height="22" fill="var(--accent)" />
+          </svg>
+          <p class="plate-school">Zhongnan Univ. of Economics &amp; Law</p>
+          <p class="plate-gpa">GPA 3.95 / 4.00</p>
+        </div>
+      </div>
+      <div class="plate-caption">
+        <span class="plate-numeral">&#8546;</span>
+        <h3>Economics &amp; Finance</h3>
+        <span class="plate-status">Conferred</span>
+      </div>
+      <p class="plate-meta">Wenlan School of Business &middot; Wuhan</p>
+      <p class="plate-date">Sept 2020 – June 2024</p>
+    </article>
+
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-head">
+    <span class="section-mark">&mdash;</span>
+    <h2>Experience</h2>
+    <span class="section-hint">Hover for detail</span>
+  </div>
+  <div class="ledger-list">
+    <article class="ledger-entry">
+      <div class="ledger-row">
+        <h3>Event Coordinator</h3>
+        <span class="ledger-date">June 2026 – Now</span>
+      </div>
+      <p class="meta">Actuarial &amp; Risk Management Association — Atlanta, GA, USA</p>
+      <ul>
+        <li>Coordinated ARMA events by communicating with guest speakers, campus offices, and board members</li>
+        <li>Managed event logistics, including room reservations, member promotion, parking validation, and on-site execution</li>
+        <li>Prepared weekly updates and event reminders for 300+ members through PIN and Outlook</li>
+      </ul>
+    </article>
+    <article class="ledger-entry">
+      <div class="ledger-row">
+        <h3>Research Assistant</h3>
+        <span class="ledger-date">Jan 2026 – Now</span>
+      </div>
+      <p class="meta">Georgia State University — Atlanta, GA, USA</p>
+      <ul>
+        <li>Collected, cleaned, and structured research datasets for empirical causal-inference projects</li>
+        <li>Built and estimated regression models to examine relationships between key variables and research outcomes</li>
+        <li>Conducted endogeneity checks, robustness tests, and alternative model specifications to validate empirical findings</li>
+      </ul>
+      <ul class="tool-tags">
+        <li>Python</li>
+        <li>STATA</li>
+        <li>Excel</li>
+      </ul>
+    </article>
+    <article class="ledger-entry">
+      <div class="ledger-row">
+        <h3>Quantitative Investment Intern</h3>
+        <span class="ledger-date">July 2023 – Aug 2023</span>
+      </div>
+      <p class="meta">Yingda Securities Co., Ltd. — Shenzhen, Guangdong</p>
+      <ul>
+        <li>Queried databases with SQL and used Python to build 6 quantitative factors for investment analysis</li>
+        <li>Processed 10M+ records with Python and developed index-closing-price estimation code with error within 1.5%</li>
+      </ul>
+      <ul class="tool-tags">
+        <li>Python</li>
+        <li>SQL</li>
+      </ul>
+    </article>
+    <article class="ledger-entry">
+      <div class="ledger-row">
+        <h3>Investment Bank Department Intern</h3>
+        <span class="ledger-date">Dec 2022 – May 2023</span>
+      </div>
+      <p class="meta">Guotai Junan Securities Shenzhen Branch — Shenzhen, Guangdong (Hybrid)</p>
+      <ul>
+        <li>Supported the IPO project of a major PCB company through document management and daily project coordination</li>
+        <li>Researched PCB industry trends, market news, and peer companies to contribute to monthly industry reports</li>
+        <li>Reviewed financial statements of companies through Wind and developed case reports to support internal analysis</li>
+      </ul>
+      <ul class="tool-tags">
+        <li>Excel</li>
+        <li>PowerPoint</li>
+        <li>Word</li>
+      </ul>
+    </article>
+    <article class="ledger-entry">
+      <div class="ledger-row">
+        <h3>Account Manager, Corporate Finance Department</h3>
+        <span class="ledger-date">July 2022 – Aug 2022</span>
+      </div>
+      <p class="meta">China Merchants Bank Shenzhen Branch — Shenzhen, Guangdong</p>
+      <ul>
+        <li>Composed a 30-page due diligence report and provided a credit plan, securing a &yen;10M increase in company's credit limit</li>
+        <li>Communicated with corporate representatives on credit business, establishing long-term relationships with 18 clients, conducting in-person visits with 4 clients, and assisting in opening accounts for 2 companies</li>
+      </ul>
+      <ul class="tool-tags">
+        <li>Excel</li>
+        <li>Word</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-head">
+    <span class="section-mark">&mdash;</span>
+    <h2>Projects</h2>
+    <span class="section-hint">Hover for detail</span>
+  </div>
+  <div class="ledger-list">
+    <article class="ledger-entry">
+      <div class="ledger-row">
+        <h3><span class="plate-num">&#8544;</span>Term Life Cash Flow Pricing Model</h3>
+        <span class="ledger-date">July 2026</span>
+      </div>
+      <p class="meta">R-based gross premium pricing model for a 20-year level term life product</p>
+      <ul>
+        <li>Built an end-to-end gross premium pricing model for a 20-year level term life product in R</li>
+        <li>Produced a 432-cell rate table solved to a 7% profit margin, validated against 10 independent tests</li>
+        <li>Found a fragile block: a 10% mortality shock wipes the margin to 0.1%, and halving lapses cuts it to 2.5%</li>
+      </ul>
+      <ul class="tool-tags">
+        <li>R</li>
+      </ul>
+      <p class="project-links">
+        <a href="https://github.com/Tedwang-gsu/term-life-pricing-model" target="_blank" rel="noopener">GitHub Repo</a>
+        &middot;
+        <a href="https://github.com/Tedwang-gsu/term-life-pricing-model/blob/main/reports/pricing_report.md" target="_blank" rel="noopener">Read Report</a>
+      </p>
+    </article>
+    <article class="ledger-entry">
+      <div class="ledger-row">
+        <h3><span class="plate-num">&#8545;</span>Health Cost Prediction Model</h3>
+        <span class="ledger-date">June 2026</span>
+      </div>
+      <p class="meta">Healthcare cost prediction in R &mdash; from EDA to actuarial calibration</p>
+      <ul>
+        <li>Built a cost prediction pipeline on 100,000 records, engineering 62 features and benchmarking 11 models</li>
+        <li>Found ElasticNet matched XGBoost and LightGBM, favoring an explainable rating plan over a black box</li>
+        <li>Judged pricing adequacy by decile lift rather than R&#178;, after catching a leakage trap and proving the data synthetic</li>
+      </ul>
+      <ul class="tool-tags">
+        <li>R</li>
+      </ul>
+      <p class="project-links">
+        <a href="https://github.com/Tedwang-gsu/healthcare-cost-prediction" target="_blank" rel="noopener">GitHub Repo</a>
+        &middot;
+        <a href="https://tedwang-gsu.github.io/healthcare-cost-prediction/" target="_blank" rel="noopener">Read Report</a>
+      </p>
+    </article>
+    <article class="ledger-entry">
+      <div class="ledger-row">
+        <h3><span class="plate-num">&#8546;</span>International Mathematics Modeling Contest for Higher Education</h3>
+        <span class="ledger-date">July 2023</span>
+      </div>
+      <p class="meta">Finalist Award &mdash; machine learning on Amazon customer review data</p>
+      <ul>
+        <li>Analysed Amazon customer reviews for a four-problem modelling brief, coding two of the four problems in Python</li>
+        <li>Extracted review keywords with the yake library and vectorised the text for semantic analysis, then trained a random forest model to 98% prediction accuracy</li>
+        <li>Built a word cloud of high-frequency review terms to summarise what customers talked about most</li>
+      </ul>
+      <ul class="tool-tags">
+        <li>Python</li>
+      </ul>
+      <p class="project-links">
+        <a href="figure/Finalist.jpg" target="_blank" rel="noopener">Certificate</a>
+      </p>
+    </article>
+    <article class="ledger-entry">
+      <div class="ledger-row">
+        <h3><span class="plate-num">&#8547;</span>Post-COVID-19 Risk Warning Model</h3>
+        <span class="ledger-date">Nov 2021 – June 2023</span>
+      </div>
+      <p class="meta">Excellence Award &mdash; predicting how one city's COVID-19 outbreak spreads to its neighbours</p>
+      <ul>
+        <li>Built Logit and neural network models to predict whether &mdash; and how severely &mdash; a COVID-19 outbreak in one city would spread to neighbouring cities</li>
+        <li>Processed and summarised 740,000+ records in Python and Excel, then trained a BP neural network that reached 71% accuracy</li>
+      </ul>
+      <ul class="tool-tags">
+        <li>Python</li>
+        <li>Excel</li>
+      </ul>
+    </article>
+    <article class="ledger-entry">
+      <div class="ledger-row">
+        <h3><span class="plate-num">&#8548;</span>2023 Mathematical Contest in Modeling</h3>
+        <span class="ledger-date">Feb 2023</span>
+      </div>
+      <p class="meta">Meritorious Award &mdash; a green GDP model weighing China's environment against growth</p>
+      <ul>
+        <li>Led the team through task allocation and scheduling, delivering a 24-page English report in four days</li>
+        <li>Built a Green GDP framework and a nonlinear program maximizing it, with land-use change as the decision variables</li>
+        <li>Applied it to 14 countries, showing China's GDP recovers within four years while sustainability capacity rises sharply</li>
+      </ul>
+      <ul class="tool-tags">
+        <li>Python</li>
+        <li>LaTeX</li>
+        <li>MATLAB</li>
+      </ul>
+      <p class="project-links">
+        <a href="figure/Meritorious.jpg" target="_blank" rel="noopener">Certificate</a>
+      </p>
+    </article>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-head">
+    <span class="section-mark">&mdash;</span>
+    <h2>Skills</h2>
+  </div>
+  <div class="skill-grid">
+
+    <article class="skill-card skill-card--wide">
+      <div class="skill-top">
+        <span class="skill-num">01</span>
+      </div>
+      <h3>SOA Exams Passed<span class="skill-dot"></span></h3>
+      <ul class="skill-items">
+        <li>Probability (P)</li>
+        <li>Financial Mathematics (FM)</li>
+        <li>Fundamentals of Actuarial Mathematics (FAM)</li>
+        <li>Statistics for Risk Modeling (SRM)</li>
+      </ul>
+      <svg class="skill-motif" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path d="M50 2C55 28 72 45 98 50C72 55 55 72 50 98C45 72 28 55 2 50C28 45 45 28 50 2Z" fill="var(--gold)" />
+      </svg>
+    </article>
+
+    <article class="skill-card skill-card--wide">
+      <div class="skill-top">
+        <span class="skill-num">02</span>
+      </div>
+      <h3>Programming &amp; Data<span class="skill-dot"></span></h3>
+      <ul class="skill-items">
+        <li>Python</li>
+        <li>SQL</li>
+        <li>R</li>
+        <li>MATLAB</li>
+        <li>STATA</li>
+        <li>Excel</li>
+        <li>Tableau</li>
+      </ul>
+      <svg class="skill-motif" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <circle cx="36" cy="42" r="26" stroke="var(--gold)" stroke-width="2" />
+        <circle cx="64" cy="42" r="26" stroke="var(--gold)" stroke-width="2" />
+        <circle cx="50" cy="66" r="26" fill="var(--accent)" />
+      </svg>
+    </article>
+
+    <article class="skill-card">
+      <div class="skill-top">
+        <span class="skill-num">03</span>
+      </div>
+      <h3>Languages<span class="skill-dot"></span></h3>
+      <ul class="skill-items">
+        <li>Chinese &mdash; Native</li>
+        <li>English &mdash; Fluent</li>
+        <li>Japanese &mdash; JLPT N2</li>
+      </ul>
+      <svg class="skill-motif" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <circle cx="50" cy="50" r="34" stroke="var(--gold)" stroke-width="2" />
+        <ellipse cx="50" cy="50" rx="16" ry="34" stroke="var(--gold)" stroke-width="2" />
+        <path d="M16 50H84" stroke="var(--gold)" stroke-width="2" />
+        <circle cx="50" cy="50" r="6" fill="var(--accent)" />
+      </svg>
+    </article>
+
+    <article class="skill-card">
+      <div class="skill-top">
+        <span class="skill-num">04</span>
+      </div>
+      <h3>Certifications<span class="skill-dot"></span></h3>
+      <ul class="skill-items">
+        <li>Data Analyst in SQL &mdash; DataCamp</li>
+        <li>Machine Learning &mdash; Coursera</li>
+      </ul>
+      <svg class="skill-motif" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <circle cx="50" cy="38" r="24" stroke="var(--gold)" stroke-width="2" />
+        <circle cx="50" cy="38" r="12" fill="var(--accent)" />
+        <path d="M36 58L32 94L50 83L68 94L64 58" stroke="var(--gold)" stroke-width="2" />
+      </svg>
+    </article>
+
+    <article class="skill-card">
+      <div class="skill-top">
+        <span class="skill-num">05</span>
+      </div>
+      <h3>Soft Skills<span class="skill-dot"></span></h3>
+      <ul class="skill-items">
+        <li>Leadership</li>
+        <li>Communication</li>
+        <li>Analytical Thinking</li>
+        <li>Creativity</li>
+        <li>Cross-Cultural Teamwork</li>
+      </ul>
+      <svg class="skill-motif" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path d="M30 72L50 26L74 66Z" stroke="var(--gold)" stroke-width="2" />
+        <circle cx="50" cy="26" r="8" fill="var(--accent)" />
+        <circle cx="30" cy="72" r="8" stroke="var(--gold)" stroke-width="2" />
+        <circle cx="74" cy="66" r="8" stroke="var(--gold)" stroke-width="2" />
+      </svg>
+    </article>
+
+  </div>
+</section>
+
+</main>
+
+<!-- Scroll window: its height is how far the page slides up to uncover the panel below -->
+<div id="contact" class="contact-reveal"></div>
+
+<section class="contact-panel" aria-label="Contact">
+  <div class="contact-stage">
+    <p class="contact-eyebrow"><span>Contact</span> &mdash; happy to hear from you anytime</p>
+    <p class="contact-mark">Ziwei Wang</p>
+    <a class="contact-email" href="mailto:zwang86@student.gsu.edu">zwang86@student.gsu.edu</a>
+    <ul class="contact-links">
+      <li>
+        <a href="https://www.linkedin.com/in/Ziwei-Wang-CU" target="_blank" rel="noopener">
+          <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z" />
+          </svg>
+          LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/Tedwang-gsu" target="_blank" rel="noopener">
+          <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.83-.26.83-.58l-.02-2.04c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.36.81 1.1.81 2.22l-.01 3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3Z" />
+          </svg>
+          GitHub
+        </a>
+      </li>
+      <li>
+        <a href="assets/Ziwei_Wang_Resume.pdf" download>
+          <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+            <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
+          </svg>
+          Resume
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="contact-base">
+    <span>Ziwei Wang &middot; Actuarial Analyst</span>
+    <span>&copy; 2026 &middot; Atlanta, GA</span>
+  </div>
+  <span class="contact-watermark" aria-hidden="true">Ziwei Wang</span>
+</section>
+
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/anim.js"></script>
+</body>
+</html>

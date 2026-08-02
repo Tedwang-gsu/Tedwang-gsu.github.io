@@ -1,0 +1,1315 @@
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../assets/fonts/EBGaramond-Variable.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "EB Garamond";
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../assets/fonts/EBGaramond-Italic-Variable.ttf") format("truetype");
+}
+
+:root {
+  --bg: #F6F4EF;
+  --bg-raised: #FAF8F3;
+  --ink: #1C1C1C;
+  --text: #2E2C28;
+  --muted: #777570;
+  --line: #E3E0D7;
+  --accent: #B13A25;
+  --accent-soft: rgba(177, 58, 37, 0.09);
+  --gold: #9C7A2C;
+  /* Shared page width — nav, hero, and every section align to this */
+  --page-w: 1020px;
+  /* Soft halo behind the contact panel */
+  --glow: rgba(156, 122, 44, 0.13);
+}
+
+:root[data-theme="dark"] {
+  --bg: #121212;
+  --bg-raised: #181818;
+  --ink: #E8E6E0;
+  --text: #D9D7D0;
+  --muted: #8E8C85;
+  --line: #292929;
+  --accent: #CF5F45;
+  --accent-soft: rgba(207, 95, 69, 0.14);
+  --gold: #CBA24A;
+  --glow: rgba(203, 162, 74, 0.10);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+h1, h2, h3 {
+  font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+section {
+  max-width: var(--page-w);
+  margin: 0 auto;
+  padding: 3.75rem 1.5rem;
+  /* Nav is sticky and 62px tall — without this, jumping to a section parks
+     its top edge underneath the bar. For #hero it also pulls the target
+     above the document top, so the brand link lands at a true zero. */
+  scroll-margin-top: 4.5rem;
+}
+
+/* Section headers — editorial eyebrow style */
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-mark {
+  color: var(--accent);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Nav */
+
+#site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+#site-nav .nav-inner {
+  max-width: var(--page-w);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+}
+
+.nav-brand {
+  color: var(--ink);
+  font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+#site-nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin: 0;
+  padding: 0;
+}
+
+#site-nav ul a {
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+#site-nav ul a:hover,
+#site-nav ul a.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.theme-toggle svg {
+  width: 15px;
+  height: 15px;
+}
+
+.theme-toggle .icon-moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+  display: block;
+}
+
+#nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+#nav-toggle span {
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  display: block;
+}
+
+/* Hero — photo card + info panel, merged with About */
+
+#hero {
+  max-width: var(--page-w);
+  padding-top: 3.5rem;
+  padding-bottom: 3rem;
+  display: grid;
+  grid-template-columns: clamp(300px, 38%, 380px) 1fr;
+  gap: 2.75rem;
+  align-items: stretch;
+}
+
+.hero-photo-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  min-height: 420px;
+}
+
+.headshot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 15%;
+  display: block;
+}
+
+/* Exam codes under the stats row. Carries .badge for its looks, so it can
+   never drift from the Current Projects badges below it — this rule only
+   handles the spacing. */
+.exam-tag {
+  display: inline-block;
+  margin: 0;
+}
+
+/* Scroll cue — spans both hero columns and sits under them */
+
+/* Pinned to the viewport, not to the end of the hero — the hero runs past
+   one screen, so an in-flow cue never gets seen. Parked bottom-right
+   because everything in the hero is left-aligned, leaving that corner
+   clear; dead centre collides with the exam badge. */
+.scroll-cue {
+  position: fixed;
+  /* rides in the empty margin just outside the content column, so it never
+     lands on hero content however tall the window is */
+  right: max(0.75rem, calc((100vw - var(--page-w)) / 2 - 5rem));
+  /* vertically centred with auto margins, not translateY — GSAP owns the
+     transform for the entrance animation */
+  top: 0;
+  bottom: 0;
+  height: max-content;
+  margin: auto 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+
+/* Below this there is no margin left to put it in, and touch users don't
+   need to be told a page scrolls */
+@media (max-width: 1200px) {
+  .scroll-cue {
+    display: none;
+  }
+}
+
+.scroll-cue:hover {
+  color: var(--accent);
+}
+
+.scroll-cue-label {
+  font-family: Consolas, "SF Mono", Menlo, "Courier New", monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  /* letter-spacing trails one gap after the last letter — nudge it back */
+  text-indent: 0.26em;
+}
+
+.scroll-cue-line {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.scroll-cue-run {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 16px;
+  background: var(--gold);
+  animation: scroll-run 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.scroll-cue:hover .scroll-cue-run {
+  background: var(--accent);
+}
+
+@keyframes scroll-run {
+  0% {
+    transform: translateY(-100%);
+  }
+  55%,
+  100% {
+    transform: translateY(300%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue-run {
+    animation: none;
+  }
+}
+
+.hero-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin: 0 0 0.6rem;
+}
+
+#hero h1 {
+  font-size: 2.3rem;
+  margin: 0 0 0.9rem;
+}
+
+.hero-lede {
+  font-size: 1.03rem;
+  /* was 48ch, which wrapped well short of the column and forced a 4th line */
+  max-width: 35rem;
+  margin: 0 0 1.5rem;
+  /* evens out the line lengths so no single word is left stranded */
+  text-wrap: balance;
+}
+
+.survival-curve {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  /* scales on its own aspect ratio — a forced height squashed the curve
+     non-uniformly and thinned the stroke toward the flat right end */
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.info-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-row {
+  display: flex;
+  gap: 2rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.info-row:last-of-type {
+  border-bottom: 1px solid var(--line);
+}
+
+.info-item {
+  flex: 1;
+  min-width: 0;
+}
+
+.info-label {
+  font-family: Consolas, "SF Mono", Menlo, "Courier New", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 0.3rem;
+}
+
+.info-value {
+  font-size: 0.96rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+.info-value a {
+  border-bottom: 1px solid transparent;
+}
+
+.info-value a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.stats-row {
+  display: flex;
+  gap: 2.75rem;
+  margin: 1.45rem 0 1rem;
+}
+
+.stat-num {
+  display: block;
+  font-family: "EB Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: 2.1rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+.badge-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.55rem;
+}
+
+.badge-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  /* bottom margin opens the gap before the info panel below */
+  margin: 0 0 1.8rem;
+  padding: 0;
+}
+
+.badge {
+  font-family: Consolas, "SF Mono", Menlo, "Courier New", monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  border: 1px solid var(--gold);
+  padding: 0.3rem 0.65rem;
+}
+
+/* Clickable badge — links to a project report */
+
+.badge-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.badge-link:hover,
+.badge-link:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.badge-arrow {
+  font-size: 0.9em;
+  color: var(--gold);
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.badge-link:hover .badge-arrow,
+.badge-link:focus-visible .badge-arrow {
+  color: var(--accent);
+  transform: translate(1px, -1px);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.5rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: 1px solid var(--ink);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+}
+
+.btn-outline:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+/* Education — framed plates, caption underneath */
+
+.plate-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.25rem;
+}
+
+.plate {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Outer frame + paper mat */
+.plate-frame {
+  border: 1px solid var(--line);
+  background: var(--bg-raised);
+  padding: 0.7rem;
+  aspect-ratio: 3 / 4;
+}
+
+/* Inner hairline = the plate mark of an engraving */
+.plate-art {
+  height: 100%;
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.15rem;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.plate-degree {
+  font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+  font-size: 2.7rem;
+  line-height: 1;
+  color: var(--ink);
+  margin: 0;
+}
+
+.plate-motif {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+}
+
+.plate-school {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text);
+  margin: 0;
+  max-width: 20ch;
+}
+
+.plate-gpa {
+  font-family: Consolas, "SF Mono", Menlo, "Courier New", monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.76rem;
+  letter-spacing: 0.03em;
+  color: var(--gold);
+  margin: 0;
+}
+
+/* Caption row — numeral + title left, status right */
+.plate-caption {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  margin-top: 0.95rem;
+}
+
+.plate-numeral {
+  font-family: "EB Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.plate-caption h3 {
+  margin: 0;
+  font-size: 1.18rem;
+  line-height: 1.25;
+}
+
+.plate-status {
+  font-family: Consolas, "SF Mono", Menlo, "Courier New", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.plate-status.is-current {
+  color: var(--accent);
+}
+
+.plate-meta {
+  font-size: 0.86rem;
+  color: var(--muted);
+  margin: 0.4rem 0 0;
+}
+
+/* Pushed to the bottom of the card so the three dates line up
+   even when a school name wraps onto a second line */
+.plate-date {
+  font-family: Consolas, "SF Mono", Menlo, "Courier New", monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: auto 0 0;
+  padding-top: 0.25rem;
+}
+
+/* Ledger entries — experience / projects */
+
+.ledger-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.ledger-entry {
+  border-top: 1px solid var(--line);
+  padding: 1.5rem 0;
+}
+
+.ledger-list .ledger-entry:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.ledger-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.ledger-row h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  transition: color 0.35s ease;
+}
+
+.plate-num {
+  display: inline-block;
+  color: var(--accent);
+  font-style: normal;
+  margin-right: 0.4rem;
+}
+
+.ledger-date {
+  font-family: Consolas, "SF Mono", Menlo, "Courier New", monospace;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0.15rem 0;
+}
+
+.ledger-entry ul {
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Keep bullet lines at a readable measure even as the page gets wider */
+.ledger-entry ul:not(.tool-tags) {
+  max-width: 100ch;
+}
+
+.ledger-entry li {
+  position: relative;
+  padding-left: 1.1rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.96rem;
+}
+
+.ledger-entry li::before {
+  content: '\2013';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* Entry detail — collapsed until the row is hovered or focused.
+   The 0fr/1fr grid row is the one height transition the browser can
+   actually interpolate, so nothing here needs a hard-coded max-height.
+   .entry-detail is injected by main.js; without JS the list is plain
+   and stays open. */
+
+.entry-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.entry-detail > ul {
+  overflow: hidden;
+  min-height: 0;
+  margin: 0;
+  /* spacing lives inside the clipped box so it collapses along with it */
+  padding-top: 0.85rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.ledger-entry:hover .entry-detail,
+.ledger-entry:focus-within .entry-detail {
+  grid-template-rows: 1fr;
+}
+
+.ledger-entry:hover .entry-detail > ul,
+.ledger-entry:focus-within .entry-detail > ul {
+  opacity: 1;
+}
+
+/* Accent bar in the left margin marks the active row */
+.ledger-entry {
+  position: relative;
+}
+
+.ledger-entry::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ledger-entry:hover::before,
+.ledger-entry:focus-within::before {
+  transform: scaleY(1);
+}
+
+.ledger-entry:hover .ledger-row h3,
+.ledger-entry:focus-within .ledger-row h3 {
+  color: var(--accent);
+}
+
+.ledger-entry:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 8px;
+}
+
+.section-hint {
+  margin-left: auto;
+  font-family: Consolas, "SF Mono", Menlo, "Courier New", monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* No hover on touch: show everything and drop the affordance */
+@media (hover: none) {
+  .entry-detail {
+    grid-template-rows: 1fr;
+  }
+
+  .entry-detail > ul {
+    opacity: 1;
+  }
+
+  .ledger-entry::before {
+    display: none;
+  }
+
+  .section-hint {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entry-detail,
+  .entry-detail > ul,
+  .ledger-entry::before {
+    transition: none;
+  }
+}
+
+.tool-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.9rem 0 0;
+  padding: 0;
+}
+
+.tool-tags li {
+  font-family: Consolas, "SF Mono", Menlo, "Courier New", monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 0.18rem 0.55rem;
+  margin-bottom: 0;
+}
+
+/* These are tags, not bullets — drop the dash the ledger list adds */
+.tool-tags li::before {
+  content: none;
+}
+
+/* Location left, tool tags right under the date (built by main.js) */
+.entry-sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+  margin-top: 0.15rem;
+}
+
+.entry-sub .meta,
+.entry-sub .project-links,
+.entry-sub .tool-tags {
+  margin: 0;
+}
+
+/* Links + tags travel together on the right. The auto margin lives on the
+   group rather than on either child, so the tags stay flush under the date
+   whether or not the entry has a location line or links. */
+.entry-sub-right {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.5rem 1.25rem;
+  margin-left: auto;
+}
+
+.project-links {
+  margin: 0.9rem 0 0;
+  font-size: 0.85rem;
+  font-family: Consolas, "SF Mono", Menlo, "Courier New", monospace;
+}
+
+.project-links a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--gold);
+}
+
+.project-links a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Skills — definition-list ledger */
+
+/* Skills — bento grid: two wide cards over three, one inverted */
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.1rem;
+}
+
+.skill-card {
+  position: relative;
+  overflow: hidden;
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  min-height: 196px;
+  padding: 1.3rem 1.4rem 1.5rem;
+  border: 1px solid var(--line);
+  background: var(--bg-raised);
+}
+
+.skill-card--wide {
+  grid-column: span 3;
+  min-height: 224px;
+}
+
+.skill-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.15rem;
+}
+
+.skill-num {
+  font-family: Consolas, "SF Mono", Menlo, "Courier New", monospace;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 0.14rem 0.62rem;
+}
+
+.skill-card h3 {
+  margin: 0 0 1.1rem;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.skill-card--wide h3 {
+  font-size: 1.5rem;
+}
+
+/* The accent dot that closes every title in the reference layout */
+.skill-dot {
+  display: inline-block;
+  width: 0.3em;
+  height: 0.3em;
+  margin-left: 0.42em;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: 0.14em;
+}
+
+.skill-items {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* Same treatment as .tool-tags in Experience / Projects */
+.skill-items li {
+  font-family: Consolas, "SF Mono", Menlo, "Courier New", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 0.18rem 0.55rem;
+}
+
+/* Decorative corner mark, half off the card like the reference blobs */
+.skill-motif {
+  position: absolute;
+  right: -12px;
+  bottom: -16px;
+  width: 108px;
+  height: 108px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* Contact — closing section */
+
+/* Contact — a panel fixed to the viewport that the page slides up to uncover.
+   main is the opaque "sheet" on top; .contact-reveal is the empty scroll
+   window whose height decides how much of the panel gets exposed. */
+
+main {
+  position: relative;
+  z-index: 1;
+  background: var(--bg);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* 67% — at the bottom of the page the top third of main stays on screen.
+   .contact-panel below must use the same height so its content sits
+   entirely inside the uncovered area. */
+.contact-reveal {
+  height: 67vh;
+  height: 67svh;
+}
+
+.contact-panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  height: 67vh;   /* keep in step with .contact-reveal */
+  height: 67svh;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-raised);
+}
+
+/* Faint halo, standing in for the moon in the reference layout */
+.contact-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 34%, var(--glow), transparent 58%);
+  pointer-events: none;
+}
+
+.contact-stage {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.25rem 1.5rem;
+}
+
+.contact-eyebrow {
+  font-size: 0.76rem;
+  color: var(--muted);
+  margin: 0 0 1.7rem;
+}
+
+.contact-eyebrow span {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  margin-right: 0.3em;
+}
+
+.contact-mark {
+  font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+  /* also keyed to viewport height — the panel is only 67svh tall now */
+  font-size: clamp(2.8rem, min(9vw, 13vh), 6.5rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin: 0 0 1.5rem;
+}
+
+.contact-email {
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: clamp(1.15rem, 2.4vw, 1.7rem);
+  color: var(--ink);
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-email:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.contact-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem 2.2rem;
+  margin: 2.4rem 0 0;
+  padding: 0;
+  font-size: 0.84rem;
+  letter-spacing: 0.06em;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.link-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.contact-links a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.contact-base {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 1.4rem 1.75rem;
+  font-family: Consolas, "SF Mono", Menlo, "Courier New", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.contact-watermark {
+  position: absolute;
+  right: -0.06em;
+  bottom: -0.2em;
+  font-family: "EB Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(6rem, min(20vw, 34vh), 15rem);
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--ink);
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Motion — masked text reveals.
+   These only apply when <html class="anim"> is present, so the page
+   degrades to a fully visible static document without JS or GSAP. */
+
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Per-word masks for headline reveals. The padding/margin pair keeps
+   descenders (the j in "Projects") from being clipped by the mask. */
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.word-i {
+  display: inline-block;
+}
+
+/* Responsive */
+
+/* Phones and short windows can't spare a full viewport for the reveal —
+   drop back to a plain footer panel at the end of the document. */
+@media (max-width: 700px), (max-height: 620px) {
+  main {
+    box-shadow: none;
+  }
+
+  .contact-reveal {
+    display: none;
+  }
+
+  .contact-panel {
+    position: relative;
+    height: auto;
+  }
+
+  .contact-stage {
+    padding: 4.5rem 1.5rem;
+  }
+}
+
+/* Bento grid: 6 columns -> 2 -> 1 */
+@media (max-width: 900px) {
+  .skill-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skill-card {
+    grid-column: span 1;
+  }
+
+  .skill-card--wide {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .skill-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-card--wide {
+    grid-column: span 1;
+  }
+}
+
+/* Three plates side by side get too cramped below this — stack them */
+@media (max-width: 820px) {
+  .plate-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .plate-frame {
+    max-width: 320px;
+  }
+
+  .plate-degree {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 700px) {
+  #hero {
+    grid-template-columns: 1fr;
+    padding-top: 2.75rem;
+  }
+
+  .hero-photo-card {
+    min-height: 280px;
+  }
+
+  .info-row {
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .stats-row {
+    flex-wrap: wrap;
+    row-gap: 1.25rem;
+  }
+
+  .ledger-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #nav-toggle {
+    display: flex;
+  }
+
+  #site-nav ul {
+    position: absolute;
+    top: 62px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+
+  #site-nav.nav-open ul {
+    max-height: 420px;
+  }
+
+  #site-nav ul li {
+    width: 100%;
+    border-top: 1px solid var(--line);
+  }
+
+  #site-nav ul a {
+    display: block;
+    padding: 0.9rem 1.5rem;
+  }
+
+  .theme-toggle {
+    margin-right: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #hero h1 {
+    font-size: 1.85rem;
+  }
+
+  section {
+    padding: 2.75rem 1.25rem;
+  }
+}
